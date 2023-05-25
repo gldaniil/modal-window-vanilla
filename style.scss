@@ -1,20 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+$fp: "Pangolin", cursive;
+$fplex: "IBM Plex Mono", monospace;
+$header-color: rgba(71, 71, 71, 0.15);
+$width: 1080px;
 * {
   margin: 0;
   padding: 0;
 }
 body {
   min-height: 100vh;
-  background: linear-gradient(151deg, rgb(0, 0, 0) 0%, rgba(102, 0, 235, 0.452) 80%),
+  background: linear-gradient(151deg, rgb(0, 0, 0) 0%, rgba(3, 29, 116, 0.452) 80%),
   linear-gradient(302deg, rgb(3, 29, 116) 15%, rgba(76, 14, 221, 0.253) 70%),
-  linear-gradient(25deg, rgb(5, 1, 1) 0%, rgba(255, 0, 0, 0.932) 80%);
+  linear-gradient(25deg, rgb(0, 0, 0) 0%, rgba(255, 0, 0, 0.75) 75%);
+  color: #fff;
+}
+@keyframes blink {
+  0%  { background-color: #ccc; }
+  49% { background-color: #ccc; }
+  50% { background-color: transparent; }
+  99% { background-color: transparent; }
+  100%  { background-color: #ccc; }
+}
+.container {
+  max-width: $width;
+  margin: 0 auto;
 }
 .header {
   &__wrapper {
     background-color: transparent;
   }
   &__container {
-    max-width: 1080px;
+    max-width: $width;
     min-height: 80px;
     margin: 0 auto;
+  }
+  &__inner {
+    height: 100%;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    background-color: $header-color;
+    transition: background-color 2s ease-in;
+  }
+  &__item {
+    margin-left: auto;
+    padding: 20px 10px;
+  }
+  &__link {
+    color: #fff;
+    font-size: 24px;
+    font-family: $fp;
+    letter-spacing: 3px;
+    text-decoration: none;
+    transition: color .5s ease;
+  }
+}
+.panel-base {
+  &__inner {
+    padding-top: 200px;
+  }
+  &__head {
+    display: flex;
+    justify-content: center;
+  }
+  &__title {
+    font-size: 38px;
+    font-family: $fplex;
+    text-align: center;
+  }
+  & .cursor {
+    display: inline-block;
+    border-color: #ccc;
+    margin-left: .1rem;
+    width: 3px;
+    &.typing {
+      animation: blink 1s infinite .25s;
+    }
   }
 }
