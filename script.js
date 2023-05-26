@@ -1,9 +1,9 @@
 const panelTitle = document.querySelector(".panel-base__title");
-const panelTitleText = "Привет! Это модальное окно!";
+const panelTitleText = "Привет! Это модальное окно! Оно появится на следующем листе.";
 const speed = 150;
 let i = 0;
 
-const typeWriter = async () => {
+const typeWriter = () => {
   const cursor = panelTitle.nextElementSibling;
   cursor.classList.add("typing");
   if (i < panelTitleText.length) {
@@ -14,4 +14,3 @@ const typeWriter = async () => {
 };
 
 typeWriter();
-document.addEventListener("DOMContentLoaded", () => typeWriter);
