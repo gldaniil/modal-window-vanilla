@@ -11,21 +11,14 @@ body {
   color: #fff;
 }
 
-@keyframes blink {
+@keyframes buttonAnimation {
   0% {
-    background-color: #ccc;
-  }
-  49% {
-    background-color: #ccc;
-  }
-  50% {
-    background-color: transparent;
-  }
-  99% {
-    background-color: transparent;
+    opacity: 0;
+    transform: translateX(-75%);
   }
   100% {
-    background-color: #ccc;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 .container {
@@ -67,21 +60,30 @@ body {
 }
 .panel-base__head {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
-.panel-base__title {
+.panel-base__text {
   font-size: 38px;
   font-family: "IBM Plex Mono", monospace;
   text-align: center;
 }
-.panel-base .cursor {
-  display: inline-block;
-  border-color: #ccc;
-  margin-left: 0.1rem;
-  width: 3px;
+.panel-base__button {
+  cursor: pointer;
+  margin-top: 200px;
+  border: none;
+  border-radius: 17.5px;
+  padding: 15px 30px;
+  color: #fff;
+  font: normal 22px "IBM Plex Mono", monospace;
+  background: rgba(95, 23, 143, 0.75);
+  box-shadow: 0 0 12px 5px rgba(95, 23, 143, 0.75);
+  transition: all 0.5s linear;
+  animation: buttonAnimation 1.5s ease-in-out forwards;
 }
-.panel-base .cursor.typing {
-  animation: blink 1s infinite 0.25s;
+.panel-base__button:hover {
+  background-color: rgba(1, 53, 165, 0.75);
+  box-shadow: 0 0 24px 10px rgba(1, 53, 165, 0.75);
 }
 
 /*# sourceMappingURL=style.css.map */
