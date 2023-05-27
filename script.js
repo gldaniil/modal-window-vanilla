@@ -27,7 +27,8 @@ function gradualAppearence() {
           resolve();
         }
       }
-    }, 75);
+      // 75
+    }, 0);
   });
 }
 gradualAppearence().then(() => {
@@ -35,7 +36,30 @@ gradualAppearence().then(() => {
 });
 const boby = () => {
   const buttonOpenModal = document.createElement("button");
-  buttonOpenModal.innerText = "Открыть"
-  buttonOpenModal.className = "panel-base__button"
-  console.log(panelTitle.parentElement.appendChild(buttonOpenModal))
+  buttonOpenModal.dataset.func = "open";
+  buttonOpenModal.innerText = "Открыть";
+  buttonOpenModal.className = "panel-base__button";
+  panelTitle.parentElement.appendChild(buttonOpenModal);
+  // modal.style.visibility = "inherit";
 };
+
+const clickHandling = (e) => {
+  const target = e.target;
+  if (target.dataset.func === "open") {
+    modal.classList.remove("close");
+    modal.classList.add("open");
+  }
+};
+document.body.addEventListener("click", (e) => clickHandling(e));
+
+// Modal Window
+const modalClickHandling = (e) => {
+  const target = e.target;
+  if (target.classList.contains("modal") || target.dataset.func === "close") {
+    modal.classList.remove("open");
+    modal.classList.add("close");
+  }
+  console.log(target);
+};
+const modal = document.querySelector(".modal");
+modal.addEventListener("click", (e) => modalClickHandling(e));
