@@ -1,4 +1,4 @@
-@import './animations';
+@import './animations', './mixs';
 @import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
 $fp: "Pangolin", cursive;
@@ -8,6 +8,7 @@ $width: 1080px;
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 body {
   min-height: 100vh;
@@ -94,19 +95,21 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   visibility: hidden;
-  transition: all .5s linear;
+  transition: all .75s linear;
   &.open {
     visibility: visible;
     opacity: 1;
+    backdrop-filter: blur(12px);
   }
   &-window {
     width: 500px;
-    height: 500px;
     box-sizing: border-box;
+    box-shadow: 0 0 8px 5px rgb(109, 20, 168);
     border-radius: 17.5px;
     padding: 40px;
     position: relative;
-    background-color:rgb(109, 20, 168);
+    background:linear-gradient(151deg, rgb(0, 0, 0) 0%, rgba(3, 29, 116, 0.8) 100%),
+    linear-gradient(302deg, rgb(3, 29, 116) 70%, rgba(76, 14, 221, 1) 100%);
     &__close {
       cursor: pointer;
       position: absolute;
@@ -116,6 +119,7 @@ body {
       font: bold 28px $fplex;
       line-height: 1;
       transition: color .5s ease 0s;
+      user-select: none;
       &:hover {
         color: rgb(255, 0, 0);
       }
@@ -125,7 +129,69 @@ body {
     color: #fff;
     &__title {
       font: bold 24px $fplex;
+      user-select: none;
+    }
+    &__form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 20px;
+    }
+    &__group {
+      width: 100%;
+      border: 2px solid rgb(255, 123, 0);
+      border-radius: 10px;
+      padding: 0 20px;
+      background-color: rgba(0,0,0, .25);
+    }
+    &__sign {
+      padding: 10px 12px 10px 5px;
+      font: normal 14px $fplex;
+      user-select: none;
+      &::after {
+        content: "*";
+        margin-left: 2px;
+        position: absolute;
+        font-size: 10px;
+        color: rgb(255, 0, 0);
+      }
+    }
+    &__input {
+      width: 100%;
+      margin: 5px 0 15px 0;
+      @include borderOut;
+      border-bottom: 2px solid rgb(255, 255, 0);
+      padding: 0 5px 10px 5px;
+      color: #fff;
+      font: normal 16px $fplex;
+      background-color: transparent;
+    }
+    &__comment {
+      width: 100%;
+      margin: 15px 0;
+      @include borderOut;
+      font: normal 16px $fplex;
+      color: #fff;
+      background-color: transparent;
+      resize: none;
+    }
+    &__sending {
+      cursor: pointer;
       text-align: center;
+      width: 50%;
+      margin: 0;
+      @include borderOut;
+      border: 2px solid rgb(255, 123, 0);
+      border-radius: 10px;
+      padding: 10px 0;
+      color: #fff;
+      font: normal 16px $fplex;
+      background-color: rgba(109, 20, 168, .75);
+      transition: all .5s linear;
+      &:hover {
+        background-color: rgba(109, 20, 168, .5);
+      }
     }
   }
 }

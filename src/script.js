@@ -40,26 +40,35 @@ const boby = () => {
   buttonOpenModal.innerText = "Открыть";
   buttonOpenModal.className = "panel-base__button";
   panelTitle.parentElement.appendChild(buttonOpenModal);
-  // modal.style.visibility = "inherit";
 };
 
-const clickHandling = (e) => {
+const closeModal = (e) => {
+  if (e.key === "Escape") {
+    modal.classList.remove("open");
+    document.removeEventListener("keydown", closeModal);
+  }
+}
+
+const pageClickHandling = (e) => {
   const target = e.target;
   if (target.dataset.func === "open") {
-    modal.classList.remove("close");
     modal.classList.add("open");
+    document.addEventListener("keydown", (e) => closeModal(e));
   }
 };
-document.body.addEventListener("click", (e) => clickHandling(e));
+document.body.addEventListener("click", (e) => pageClickHandling(e));
 
 // Modal Window
 const modalClickHandling = (e) => {
   const target = e.target;
   if (target.classList.contains("modal") || target.dataset.func === "close") {
     modal.classList.remove("open");
-    modal.classList.add("close");
   }
   console.log(target);
+  if (target.dataset.func === "send") {
+    console.log("Continue...")
+  }
+  e.preventDefault();
 };
 const modal = document.querySelector(".modal");
 modal.addEventListener("click", (e) => modalClickHandling(e));

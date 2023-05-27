@@ -39,11 +39,22 @@
       </section>
     </main>
   </div>
-  <div class="modal close">
+  <div class="modal">
     <div class="modal-window">
       <div class="modal-window__close" data-func="close">×</div>
       <div class="modal-content">
-        <h2 class="modal-content__title">Заголовок</h2>
+        <h2 class="modal-content__title">Помогите нам стать лучше!</h2>
+        <form class="modal-content__form">
+          <fieldset class="modal-content__group">
+            <legend class="modal-content__sign">Ваше имя</legend>
+            <input type="text" name="nickname" id="nickname" class="modal-content__input" maxlength="32" placeholder="Укажите имя/никнейм">
+          </fieldset>
+          <fieldset class="modal-content__group">
+            <legend class="modal-content__sign">Отзыв</legend>
+            <textarea class="modal-content__comment" name="comment" id="comment" cols="auto" rows="7" placeholder="Опишите нашу деятельность или пожелания"></textarea>
+          </fieldset>
+          <input type="submit" value="Отправить" class="modal-content__sending" data-func="send">
+        </form>
       </div>
     </div>
   </div>
