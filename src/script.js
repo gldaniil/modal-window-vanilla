@@ -28,7 +28,7 @@ function gradualAppearence() {
         }
       }
       // 75
-    }, 0);
+    }, 75);
   });
 }
 gradualAppearence().then(() => {
