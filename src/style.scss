@@ -61,9 +61,20 @@ body {
     align-items: center;
   }
   &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
     font-size: 38px;
     font-family: $fplex;
-    text-align: center;
+    & p {
+      display: inline;
+      line-height: 1;
+      &.typing {
+        padding: 0 5px;
+        animation: blink 1s infinite;
+      }
+    }
   }
   &__button {
     cursor: pointer;

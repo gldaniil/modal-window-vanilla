@@ -1,3 +1,4 @@
+$clr: rgb(255, 230, 0);
 @keyframes buttonAnimation {
   0% {
     opacity: 0;
@@ -7,4 +8,11 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+@keyframes blink {
+  0%  { border-right: 4px solid $clr; }
+  49% { border-right: 4px solid $clr; }
+  50% { border-right: 4px solid transparent; }
+  99% { border-right: 4px solid transparent; }
+  100%  { border-right: 4px solid $clr; }
 }
